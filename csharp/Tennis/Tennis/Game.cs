@@ -3,6 +3,10 @@ using System.ComponentModel;
 
 namespace Tennis
 {
+    /// <summary>
+    /// The main class of the game where all objects are manipulated. Call
+    /// <see cref="Play"/> to start the game.
+    /// </summary>
     public class Game
     {
         private Player _player1;
@@ -10,13 +14,12 @@ namespace Tennis
         private readonly Random _rnd = new Random();
         private bool _gameCompleted;
 
-        public Game()
-        {
-            Reset();
-        }
-
+        /// <summary>
+        /// Start the tennis game.
+        /// </summary>
         public void Play()
         {
+            Reset();
             Console.WriteLine();
             Console.WriteLine($"Game has started. Players are {_player1.Name} and {_player2.Name}.");
             while (!_gameCompleted)
@@ -26,6 +29,9 @@ namespace Tennis
             }
         }
 
+        /// <summary>
+        /// Reset the game.
+        /// </summary>
         public void Reset()
         {
             _player1 = new Player(Helpers.GetName());
@@ -60,18 +66,75 @@ namespace Tennis
         /// <param name="loser">The loser of the point.</param>
         private void Score(Player winner, Player loser)
         {
-            _gameCompleted = true;
+            switch (winner.Score)
+            {
+                case Tennis.Score.Love:
+                case Tennis.Score.Fifteen:
+                    winner.IncreaseScore();
+                    PrintScore(winner, loser);
+                    break;
+                case Tennis.Score.Thirty:
+                    winner.IncreaseScore();
+                    PrintScore(winner, loser);
+                    break;
+                case Tennis.Score.Forty:
+                    if (loser.Score <= Tennis.Score.Thirty)
+                    {
+                        // Other player has either 0, 15, 30 therefore, 2 point lead as we are adv. This player has won the game.
+                        // Increase score twice as we're setting score to game, not advantage.
+                        winner.SetScoreToGame();
+                    }
+                    else if (loser.Score.Equals(Tennis.Score.Forty))
+                    {
+                        // Increase point to advantage.
+                        winner.IncreaseScore();
+                    }
+                    else if (loser.Score.Equals(Tennis.Score.Advantage))
+                    {
+                        // Back to deuce.
+                        loser.DecreaseScore();
+                    }
+                    PrintScore(winner, loser);
+                    break;
+                case Tennis.Score.Advantage:
+                    winner.IncreaseScore();
+                    PrintScore(winner, loser);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException("Invalid enum arguement.");
+            }
         }
 
-        private bool SameScoreCheck(Player winner, Player loser)
+        /// <summary>
+        /// Prints out the score dependent on if both parties have the same score.
+        /// </summary>
+        /// <param name="winner">The winner of the point.</param>
+        /// <param name="loser">The loser of the point.</param>
+        /// <returns></returns>
+        private void PrintScore(Player winner, Player loser)
         {
+            if (winner.Score.Equals(Tennis.Score.Game))
+            {
+                Console.WriteLine($"{winner.Name} has won the game! Total score: {winner.Score}:{loser.Score}!");
+                _gameCompleted = true;
+                return;
+            }
+
             if (winner.Score.Equals(loser.Score))
             {
-                Console.WriteLine($"{winner.Name} has won the point! Score: {winner.Score}: all!");
-                return true;
+                if (winner.Score.Equals(Tennis.Score.Forty))
+                {
+                    Console.WriteLine($"{winner.Name} has won the point! Score: Deuce");
+                }
+                else
+                {
+                    Console.WriteLine($"{winner.Name} has won the point! Score: {winner.Score}: all!");
+                }
+
+                return;
             }
             Console.WriteLine($"{winner.Name} has won the point! Score: {winner.Score}:{loser.Score}!");
-            return false;
+            return;
         }
     }
 }

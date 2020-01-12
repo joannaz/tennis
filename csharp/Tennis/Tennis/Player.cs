@@ -3,12 +3,12 @@
     public class Player
     {
         /// <summary>
-        /// The current score of the player.
+        /// Gets the current score of the player.
         /// </summary>
         public Score Score { get; private set; }
 
         /// <summary>
-        /// The name of the player.
+        /// Gets the name of the player.
         /// </summary>
         public string Name { get; }
 
@@ -28,6 +28,14 @@
         public void IncreaseScore()
         {
             Score = Score + 1;
+        }
+
+        /// <summary>
+        /// Set this player's score to game. They have won.
+        /// </summary>
+        public void SetScoreToGame()
+        {
+            Score = Score.Game;
         }
 
         /// <summary>
