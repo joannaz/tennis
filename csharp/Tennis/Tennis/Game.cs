@@ -47,7 +47,6 @@ namespace Tennis
         /// <returns></returns>
         private void UpdateRandomWinner()
         {
-            //todo: player who wins serves. do I need this?
             var player = _rnd.Next(2);
 
             if (player == 0)
