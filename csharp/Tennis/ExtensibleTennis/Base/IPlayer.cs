@@ -3,8 +3,12 @@ namespace ExtensibleTennis.Base
 {
     public interface IPlayer
     {
-        public IPlayer()
-        {
-        }
+        int Score { get; }
+
+        string Name { get; }
+
+        void IncrementScore();
+
+        void DecreaseScore();
     }
 }

@@ -3,10 +3,10 @@ using ExtensibleTennis.Base;
 
 namespace ExtensibleTennis.Tennis
 {
-    public class TennisPlayer : Player
+    public class TennisPlayer : Player, IPlayer
     {
-        public TennisPlayer(int pointsToWin)
-            :base(pointsToWin)
+        public TennisPlayer(string name = null)
+            :base(name)
         {
         }
 
@@ -15,9 +15,10 @@ namespace ExtensibleTennis.Tennis
         /// class. todo: Can make this internal as this is only used for
         /// unit testing.
         /// </summary>
-        /// <param name="score"></param>
-        public TennisPlayer(int score, int pointsToWin)
-            : base(pointsToWin)
+        /// <param name="score">Player score.</param>
+        /// <param name="name">Name of the player.</param>
+        public TennisPlayer(int score, string name = null)
+            : base(name)
         {
             Score = score;
             Score.CheckScore();

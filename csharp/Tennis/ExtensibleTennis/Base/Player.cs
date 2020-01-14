@@ -3,18 +3,22 @@ namespace ExtensibleTennis.Base
 {
     public abstract class Player : IPlayer
     {
-        public Player(int pointsToWin)
+        protected Player(string name = null)
         {
-            Name = Helpers.GetName();
             Score = 0;
-            PointsAheadToWin = pointsToWin;
+            if (string.IsNullOrEmpty(name))
+            {
+                Name = Helpers.GetName();
+            }
+            else
+            {
+                Name = name;
+            }
         }
 
-        public int Score { internal get; set; }
+        public int Score { get; internal set; }
 
         public string Name { get; private set; }
-
-        public int PointsAheadToWin { get; private set; }
 
         public void IncrementScore()
         {
