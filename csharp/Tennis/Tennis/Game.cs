@@ -69,10 +69,8 @@ namespace Tennis
             {
                 case Tennis.Score.Love:
                 case Tennis.Score.Fifteen:
-                    winner.IncreaseScore();
-                    PrintScore(winner, loser);
-                    break;
                 case Tennis.Score.Thirty:
+                case Tennis.Score.Advantage:
                     winner.IncreaseScore();
                     PrintScore(winner, loser);
                     break;
@@ -93,10 +91,6 @@ namespace Tennis
                         // Back to deuce.
                         loser.DecreaseScore();
                     }
-                    PrintScore(winner, loser);
-                    break;
-                case Tennis.Score.Advantage:
-                    winner.IncreaseScore();
                     PrintScore(winner, loser);
                     break;
                 default:
