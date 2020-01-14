@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ExtensibleTennis.Tennis;
 
-namespace ExtensibleTennis
+namespace ExtensibleTennis.Tennis
 {
     /// <summary>
     /// Helper class for the tennis game.

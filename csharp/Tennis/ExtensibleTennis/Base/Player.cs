@@ -29,5 +29,10 @@ namespace ExtensibleTennis.Base
         {
             Score = Score - 1;
         }
+
+        public void SetScoreToGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

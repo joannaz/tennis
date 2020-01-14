@@ -40,5 +40,11 @@ namespace ExtensibleTennis.Tennis
             Score = Score - 1;
             Score.CheckScore();
         }
+
+        public new void SetScoreToGame()
+        {
+            Score = 5;
+            Score.CheckScore();
+        }
     }
 }

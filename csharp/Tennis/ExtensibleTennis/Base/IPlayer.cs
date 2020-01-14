@@ -10,5 +10,7 @@ namespace ExtensibleTennis.Base
         void IncrementScore();
 
         void DecreaseScore();
+
+        void SetScoreToGame();
     }
 }
