@@ -22,6 +22,7 @@ namespace ExtensibleTennis.Tests
             Assert.AreEqual(TennisScore.Love, sut.GetScore());
         }
 
+        [Test]
         [TestCase(0)]
         [TestCase(1)]
         [TestCase(2)]
@@ -35,6 +36,7 @@ namespace ExtensibleTennis.Tests
             Assert.AreEqual(expectedScore, sut.GetScore());
         }
 
+        [Test]
         [TestCase(5)]
         [TestCase(1)]
         [TestCase(2)]
@@ -48,6 +50,7 @@ namespace ExtensibleTennis.Tests
             Assert.AreEqual(expectedScore, sut.GetScore());
         }
 
+        [Test]
         [TestCase(-1)]
         [TestCase(-123)]
         [TestCase(-444)]
@@ -69,6 +72,20 @@ namespace ExtensibleTennis.Tests
         {
             var sut = new TennisPlayer(5);
             Assert.Throws<IndexOutOfRangeException>(() => sut.IncrementScore());
+        }
+
+        [Test]
+        [TestCase(0,TennisScore.Love)]
+        [TestCase(1, TennisScore.Fifteen)]
+        [TestCase(2, TennisScore.Thirty)]
+        [TestCase(3, TennisScore.Forty)]
+        [TestCase(4, TennisScore.Advantage)]
+        [TestCase(5, TennisScore.Game)]
+        public void ReturnCorrectScoreConversion(int score, TennisScore expectedConversion)
+        {
+            var sut = new TennisPlayer(score);
+
+            Assert.AreEqual(expectedConversion, sut.GetScore());
         }
     }
 }
