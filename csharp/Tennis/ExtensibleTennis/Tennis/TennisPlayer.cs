@@ -31,13 +31,13 @@ namespace ExtensibleTennis.Tennis
 
         public new void IncrementScore()
         {
-            Score = Score + 1;
+            Score = Score++;
             Score.CheckScore();
         }
 
         public new void DecreaseScore()
         {
-            Score = Score - 1;
+            Score = Score--;
             Score.CheckScore();
         }
 

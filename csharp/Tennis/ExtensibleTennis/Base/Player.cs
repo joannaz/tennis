@@ -22,12 +22,12 @@ namespace ExtensibleTennis.Base
 
         public void IncrementScore()
         {
-            Score = Score + 1;
+            Score++;
         }
 
         public void DecreaseScore()
         {
-            Score = Score - 1;
+            Score--;
         }
 
         public void SetScoreToGame()

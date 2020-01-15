@@ -27,7 +27,7 @@
         /// </summary>
         public void IncreaseScore()
         {
-            Score = Score + 1;
+            Score++;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@
         /// </summary>
         public void DecreaseScore()
         {
-            Score = Score - 1;
+            Score--;
         }
 
         /// <summary>
