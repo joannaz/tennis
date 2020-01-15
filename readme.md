@@ -29,3 +29,7 @@ scores are equal, the score is "deuce".
 4. If at least three points have been scored by each side and a player
 has one more point than his opponent, the score of the game is
 "advantage" for the player in the lead.
+
+---
+
+JS GitHub Pages Link: [https://joannaz.github.io/tennis/js/tennis.html](https://joannaz.github.io/tennis/js/tennis.html)
