@@ -1,0 +1,21 @@
+.players {
+    text-align: center;
+}
+
+.players ul {
+    display: inline-block;
+}
+
+.players ul li {
+    list-style-type: none;
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+}
+
+.players ul li .img {
+    margin: auto;
+    width: 50%;
+    height: 60%;
+    content: url(pic.PNG);
+}

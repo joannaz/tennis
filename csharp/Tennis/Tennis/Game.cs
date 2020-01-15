@@ -72,7 +72,6 @@ namespace Tennis
                 case Tennis.Score.Thirty:
                 case Tennis.Score.Advantage:
                     winner.IncreaseScore();
-                    PrintScore(winner, loser);
                     break;
                 case Tennis.Score.Forty:
                     if (loser.Score <= Tennis.Score.Thirty)
@@ -91,11 +90,12 @@ namespace Tennis
                         // Back to deuce.
                         loser.DecreaseScore();
                     }
-                    PrintScore(winner, loser);
                     break;
                 default:
                     throw new InvalidEnumArgumentException("Invalid enum arguement.");
             }
+
+            PrintScore(winner, loser);
         }
 
         /// <summary>
